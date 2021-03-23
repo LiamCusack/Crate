@@ -1,8 +1,18 @@
 // Imports
+// imports for React and PropTypes
 import React from 'react'
 import PropTypes from 'prop-types'
 
 // Component
+
+/*
+beginning of component
+## This gets used to add styling to any grid cell.
+- breaks down all props, determines what is/isn't there, 
+  - leaves non-values if not, basic styling if there
+- ...others passes along any non-styling props
+*/
+
 const GridCell = (props) => {
   const {
     children,
@@ -15,11 +25,14 @@ const GridCell = (props) => {
     ...others
   } = props
 
+  // rendering of styling, some styling/non-styling props for state 
+  // and other styling passed here
   return (
     <div {...others}>
       {children}
 
       {/* language=CSS */}
+      {/* determining of style props */}
       <style jsx>{`
         div {
           flex: 1;
@@ -36,6 +49,7 @@ const GridCell = (props) => {
 }
 
 // Component Properties
+// checking prop types passed are accurate, throw console error if not
 GridCell.propTypes = {
   alignTop: PropTypes.bool,
   alignBottom: PropTypes.bool,
@@ -44,6 +58,7 @@ GridCell.propTypes = {
   justifyCenter: PropTypes.bool,
   gutter: PropTypes.bool
 }
+// checks default prop types, useful as not all props passed each time
 GridCell.defaultProps = {
   alignTop: false,
   alignBottom: false,
@@ -53,4 +68,5 @@ GridCell.defaultProps = {
   gutter: false
 }
 
+// export styling template
 export default GridCell
