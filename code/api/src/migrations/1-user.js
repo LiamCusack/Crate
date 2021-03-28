@@ -19,6 +19,9 @@ module.exports = {
       role: {
         type: Sequelize.TEXT
       },
+      // add column for personal description
+      // add column for image url
+      // add column for shipping address
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

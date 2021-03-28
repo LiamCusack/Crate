@@ -6,6 +6,7 @@ import CrateType from './types'
 import { create, remove, update } from './resolvers'
 
 // Crate create
+// Kind of like out controller methods (rails)
 export const crateCreate = {
   type: CrateType,
   args: {
@@ -26,6 +27,7 @@ export const crateCreate = {
 export const crateUpdate = {
   type: CrateType,
   args: {
+    // what needs to be included - do we need adiitonal validation?
     id: {
       name: 'id',
       type: GraphQLInt

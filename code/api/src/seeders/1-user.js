@@ -1,5 +1,6 @@
 'use strict';
-
+// This is a seed file! dummy data for tests etc
+// Update if / when you update data table
 const bcrypt = require('bcrypt');
 const config = require('../config/server.json');
 const params = require('../config/params.json');

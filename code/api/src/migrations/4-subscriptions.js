@@ -1,3 +1,4 @@
+// is this where delivery dates will be pulled from? Need to think through purpose of subscirptions
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('subscriptions', {

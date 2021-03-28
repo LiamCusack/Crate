@@ -23,3 +23,4 @@ module.exports = function(sequelize, DataTypes) {
     }
   })
 }
+// Need to add realtionships once we connect products to crates

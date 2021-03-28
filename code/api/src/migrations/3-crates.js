@@ -1,3 +1,4 @@
+// need some way to connect products to crates - either including them within crates or wiht a separate table (prefferred)
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('crates', {

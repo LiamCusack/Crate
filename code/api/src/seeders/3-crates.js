@@ -1,5 +1,6 @@
 'use strict';
-
+// This is a seed file! dummy data for tests etc
+// Update if / when you update data table
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('crates', [
