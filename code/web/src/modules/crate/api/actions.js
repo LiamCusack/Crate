@@ -103,6 +103,8 @@ export function createOrUpdate(crate) {
   }
 }
 
+// api calls for creating, updating or deleting crates
+
 // Create crate
 export function create(variables) {
   return dispatch => {

@@ -1,7 +1,11 @@
+// Main file needed for updates/changes to user profile
+
 // Features to add:
   // upload/change profile image
     // add a default image (below the user's name?)
     // button for user to upload a new image
+    // use file input for image upload - allows user to select image from local machine
+    // send request to the server
   // create/edit profile description
     // display description on profile page below email
   // edit email and shipping address

@@ -123,6 +123,7 @@ class Signup extends Component {
           <H3 font="secondary" style={{ marginBottom: '1em' }}>Create an account</H3>
 
           {/* Signup Form */}
+          // could potentially change the form to allow the user to add a description and shipping address when signing up
           <form onSubmit={this.onSubmit}>
             <div style={{ width: '25em', margin: '0 auto' }}>
               {/* Name */}

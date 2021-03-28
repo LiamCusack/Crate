@@ -1,4 +1,5 @@
 // Imports
+  // axios is being used for API calls
 import axios from 'axios'
 import { query, mutation } from 'gql-query-builder'
 import cookie from 'js-cookie'

@@ -55,6 +55,7 @@ export function getList(isLoading = true) {
 
 
 // Get list of subscriptions by user
+  // Use this to get a list of the user's subscriptions
 export function getListByUser(isLoading = true) {
   return dispatch => {
     dispatch({

@@ -11,6 +11,8 @@ export const userInitialState = {
 }
 
 // State
+  // reducers for user
+  // add reducers for updating profile details 
 export default (state = userInitialState, action) => {
   switch (action.type) {
     case SET_USER:

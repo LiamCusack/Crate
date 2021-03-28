@@ -1,3 +1,5 @@
+// Probably won't need to use/make changes to this file
+
 // Imports
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
@@ -23,6 +25,7 @@ import { login } from './api/actions'
 import AuthCheck from '../auth/AuthCheck'
 
 // Component
+  // class component - form used for logging in 
 class Login extends Component {
 
   constructor(props) {
