@@ -21,7 +21,7 @@ const UserMenu = (props) => (
       <Menu>
         <MenuItem to={userRoutes.profile.path} type="primary" style={{ color: black }}>My Info</MenuItem>
 
-        {/* <MenuItem to={userRoutes.orders.path} type="primary" style={{ color: black }}>My Orders</MenuItem> */}
+        <MenuItem to={userRoutes.orders.path} type="primary" style={{ color: black }}>My Orders</MenuItem>
 
         <Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>
       </Menu>
