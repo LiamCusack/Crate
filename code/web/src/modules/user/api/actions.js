@@ -1,3 +1,7 @@
+// Feel as though we will have to add to this file for the fetch calls from the api in order to retrieve the new data for the new Features
+// Would need to set up the functions that we export which will make the api calls using axios to the server
+// These function setups will be dependent on how we go about setting up the api to hold the new information and what exactly we are going to do with it once received
+
 // Imports
 import axios from 'axios'
 import { query, mutation } from 'gql-query-builder'

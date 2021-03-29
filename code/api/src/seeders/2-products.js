@@ -1,3 +1,7 @@
+// Will we need to make more products in order to create a product history?
+// 3-5 products per crate
+// At least 6 accessories and 6 clothes in order for the accessories and clothes crates to work solo
+
 'use strict';
 
 const params = require('../config/params');

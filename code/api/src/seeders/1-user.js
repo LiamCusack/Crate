@@ -1,3 +1,5 @@
+// I think the users here will need to have default information for the new things added to them 
+
 'use strict';
 
 const bcrypt = require('bcrypt');
