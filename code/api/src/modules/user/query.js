@@ -3,6 +3,7 @@ import { GraphQLInt, GraphQLString, GraphQLList } from 'graphql'
 
 // App Imports
 import { UserType, UserLoginType, UserGenderType } from './types'
+// Add getOrders below potentially
 import { getAll, getById, login, getGenders } from './resolvers'
 
 // All
