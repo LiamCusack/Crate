@@ -14,6 +14,7 @@ import { grey, grey2 } from '../../ui/common/colors'
 // App Imports
 import userRoutes from '../../setup/routes/user'
 import { logout } from './api/actions'
+import UserMenu from './common/Menu'
 
 // Component
 const Profile = (props) => (
@@ -24,11 +25,14 @@ const Profile = (props) => (
     </Helmet>
 
     {/* Top title bar */}
-    <Grid style={{ backgroundColor: grey }}>
+    {/* <Grid style={{ backgroundColor: grey }}>
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
         <H3 font="secondary">My profile</H3>
       </GridCell>
-    </Grid>
+</Grid> */ }
+
+    {/* Top menu bar */}
+    <UserMenu />
 
     <Grid>
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
