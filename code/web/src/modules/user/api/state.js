@@ -3,6 +3,7 @@ import { isEmpty } from '../../../setup/helpers'
 import { SET_USER, LOGIN_REQUEST, LOGIN_RESPONSE, LOGOUT } from './actions'
 
 // Initial State
+  // declaring the initial state 
 export const userInitialState = {
   error: null,
   isLoading: false,
@@ -12,7 +13,7 @@ export const userInitialState = {
 
 // State
   // reducers for user
-  // add reducers for updating profile details 
+  // add reducers for updating profile details
 export default (state = userInitialState, action) => {
   switch (action.type) {
     case SET_USER:

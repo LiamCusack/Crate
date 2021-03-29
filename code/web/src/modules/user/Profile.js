@@ -47,45 +47,45 @@ import { logout } from './api/actions'
 const Profile = (props) => (
   <div>
     {/* SEO */}
-    // Using Helmet to change the page title (text in browser tab).
+    {/* Using Helmet to change the page title (text in browser tab)*/}
     <Helmet>
       <title>My Profile - Crate</title>
     </Helmet>
 
     {/* Top title bar */}
-    // This is the container for the top section of the profile page.
-    // Inline style is added for background color.
+    {/* This is the container for the top section of the profile page.
+      Inline style is added for background color. */}
     <Grid style={{ backgroundColor: grey }}>
-      // This is the container for the H3 (main title) of the profile page.
-      // Inline style is added to center the text on the page.
+      {/* This is the container for the H3 (main title) of the profile page.
+      Inline style is added to center the text on the page. */}
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
-        // Displays a title on the profile page.
-        // H3 component sets the style for the text.
+        {/* Displays a title on the profile page.
+        H3 component sets the style for the text. */}
         <H3 font="secondary">My profile</H3>
       </GridCell>
     </Grid>
 
-    // This is the container for the main section of the profile page.
-    // It holds an H4, paragraph, and two buttons.
-    // Inline styles are added for each of these items on the profile page.
+    {/* This is the container for the main section of the profile page.
+    It holds an H4, paragraph, and two buttons.
+    Inline styles are added for each of these items on the profile page. */}
     <Grid>
       <GridCell style={{ padding: '2em', textAlign: 'center' }}>
-        // Displaying and styling the user's name on the page.
-        // The user's name is pulled from the user object in props.
+        {/* Displaying and styling the user's name on the page.
+        The user's name is pulled from the user object in props. */}
         <H4 style={{ marginBottom: '0.5em' }}>{props.user.details.name}</H4>
-        // Displaying and styling the user's email address on the page.
-        // The user's email is pulled from the user object in props.
+        {/* Displaying and styling the user's email address on the page.
+        The user's email is pulled from the user object in props. */}
         <p style={{ color: grey2, marginBottom: '2em' }}>{props.user.details.email}</p>
-        // Button links to the subscriptions page.
-        // The button has a primary theme (different gradient).
-        // The path comes from the subscriptions object within userRoutes.
-        // React router links to this path on button click.
+        {/* Button links to the subscriptions page.
+        The button has a primary theme (different gradient).
+        The path comes from the subscriptions object within userRoutes.
+        React router links to this path on button click. */}
         <Link to={userRoutes.subscriptions.path}>
           <Button theme="primary">Subscriptions</Button>
         </Link>
-        // Button logs a user out and directs them to the login page.
-        // The button has a secondary theme (different gradient).
-        // On button click, the logout action is handled.
+        {/* Button logs a user out and directs them to the login page.
+        The button has a secondary theme (different gradient).
+        On button click, the logout action is handled. */}
         <Button theme="secondary" onClick={props.logout} style={{ marginLeft: '1em' }}>Logout</Button>
       </GridCell>
     </Grid>
@@ -107,4 +107,5 @@ function profileState(state) {
   }
 }
 
+// connecting the component to the store
 export default connect(profileState, { logout })(Profile)
