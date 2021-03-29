@@ -14,6 +14,16 @@ module.exports = function(sequelize, DataTypes) {
     },
     role: {
       type: DataTypes.TEXT
+    },
+    description: {
+      type: DataTypes.STRING
+    },
+    image: {
+      type: DataTypes.TEXT,
+      defaultValue: '/images/stock/default_profile.jpg'
+    },
+    shippingAddress: {
+      type: DataTypes.TEXT
     }
   })
 
