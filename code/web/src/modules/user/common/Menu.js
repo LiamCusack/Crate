@@ -36,9 +36,9 @@ UserMenu.propTypes = {
 
 // Component State
 function userMenuState(state) {
-    return {
+  return {
       user: state.user
-    }
   }
+}
 
 export default connect(userMenuState, { logout })(UserMenu)

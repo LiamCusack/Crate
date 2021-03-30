@@ -10,8 +10,8 @@ const Orders = () => (
         {/* Top menu bar */}
         <UserMenu />
 
-        <h1>Dummy Component Pure</h1>
+        <h1>Sample Orders Component</h1>
     </div>
 )
 
-export default Orders;
+export default Orders
