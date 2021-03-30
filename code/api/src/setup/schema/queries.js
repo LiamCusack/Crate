@@ -18,7 +18,8 @@ const query = new GraphQLObjectType({
     ...product,
     ...crate,
     ...subscription,
-    ...order
+    ...order,
+    ...orderProduct
   })
 })
 
