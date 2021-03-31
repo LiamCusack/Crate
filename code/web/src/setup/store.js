@@ -4,6 +4,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
 // App Imports
+// here is where all the reducers live
 import common from '../modules/common/api/state'
 import user from '../modules/user/api/state'
 import * as product from '../modules/product/api/state'
