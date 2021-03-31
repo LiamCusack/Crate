@@ -19,13 +19,21 @@ class Profile extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isEditing: false
+      isEditing: false,
+      email: this.props.user.details.email
     }
   }
 
-  editProfileDetails = () => {
+  toggleEdit = () => {
     this.setState({
-      isEditing: true
+      isEditing: !this.state.isEditing
+    })
+  }
+
+  onChange = (event) => {
+    event.preventDefault()
+    this.setState({
+      [event.target.name]: event.target.value
     })
   }
 
@@ -45,14 +53,26 @@ class Profile extends Component {
             {!this.state.isEditing &&
               <>
                 <img src={this.props.user.details.image} alt='profile-pic' style={{maxWidth: 250, marginBottom: '0.5em'}}/>
-                <p style={{ color: grey2, marginBottom: '2em' }}>{this.props.user.details.email}</p>
+                <p style={{ color: grey2, marginBottom: '2em' }}>{this.state.email}</p>
                 <p style={{ color: grey2, marginBottom: '2em' }}>About Me: {this.props.user.details.description}</p>
                 <p style={{ color: grey2, marginBottom: '2em' }}>Shipping Address: {this.props.user.details.shippingAddress}</p>
                 <p style={{ color: grey2, marginBottom: '2em' }}>Next Delivery:</p>
-                <Button theme='primary' onClick={this.editProfileDetails}>Edit Profile</Button>
+                <Button theme='primary' onClick={this.toggleEdit}>Edit Profile</Button>
               </>
             }
-
+            {this.state.isEditing &&
+              <>
+                <label>Email:
+                <input
+                  type='email'
+                  name='email'
+                  value={this.state.email}
+                  onChange={this.onChange}
+                />
+                </label>
+                <Button theme='primary' onClick={this.toggleEdit}>Submit</Button>
+              </>
+            }
           </GridCell>
         </Grid>
       </div>
