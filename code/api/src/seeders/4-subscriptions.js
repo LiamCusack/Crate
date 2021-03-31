@@ -3,57 +3,29 @@
 module.exports = {
   up: async (queryInterface) => {
 
-    const subscriptions = await queryInterface.sequelize.query(
-      `SELECT id from SUBSCRIPTIONS;`
+    const users = await queryInterface.sequelize.query(
+      `SELECT id from USERS;`
     );
 
-    const subscriptionRows = subscriptions[0]
+    const crates = await queryInterface.sequelize.query(
+      `SELECT id from CRATES;`
+    );
+    
+    const userRows = users[0]
+    const crateRows = crates[0]
 
-'use strict';
-
-module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('crates', [
-      {
-        name: 'Clothes for Men',
-        description: 'A monthly supply of trendy clothes for men.',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        name: 'Clothes for Women',
-        description: 'A monthly supply of trendy clothes for women.',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        name: 'Accessories for Men',
-        description: 'A monthly supply of trendy accessories for men',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        name: 'Accessories for Women',
-        description: 'A monthly supply of trendy accessories for women',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        name: 'Clothes and Accessories for Men',
-        description: 'A monthly supply of trendy clothes and accessories for men',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        name: 'Clothes and Accessories for Women',
-        description: 'A monthly supply of trendy clothes and accessories for women',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      }
-    ], {})
+    return await queryInterface.bulkInsert('subscriptions', [
+      {id: 1, userId: userRows[3].id, crateId: crateRows[0].id, createdAt: new Date(), updatedAt: new Date()},
+      {id: 2, userId: userRows[3].id, crateId: crateRows[0].id, createdAt: new Date(), updatedAt: new Date()},
+      {id: 3, userId: userRows[3].id, crateId: crateRows[0].id, createdAt: new Date(), updatedAt: new Date()},
+      {id: 4, userId: userRows[3].id, crateId: crateRows[0].id, createdAt: new Date(), updatedAt: new Date()},
+      {id: 5, userId: userRows[2].id, crateId: crateRows[2].id, createdAt: new Date(), updatedAt: new Date()},
+      {id: 6, userId: userRows[2].id, crateId: crateRows[1].id, createdAt: new Date(), updatedAt: new Date()},
+      {id: 7, userId: userRows[2].id, crateId: crateRows[2].id, createdAt: new Date(), updatedAt: new Date()}
+    ], {});
   },
 
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('crates', null, {});
+  down: async (queryInterface) => {
+    return queryInterface.bulkDelete('subscriptions', null, {});
   }
-}
+};
