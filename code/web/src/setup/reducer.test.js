@@ -15,6 +15,15 @@ describe.only('rootReducer', () => {
   })
 
   it('should empty state when resetting', () => {
+    const passedState = {
+      common: 'common',
+      user: 'user'
+    }
+
+    const actual = rootReducer(passedState, 'RESET')
+
+    expect(actual.crates.list).toEqual([])
+    expect(actual.subscription.item).toEqual({})
   })
 })
 
