@@ -15,10 +15,7 @@ describe.only('rootReducer', () => {
   })
 
   it('should empty state when resetting', () => {
-    const passedState = {
-      common: 'common',
-      user: 'user'
-    }
+    const passedState = {}
 
     const actual = rootReducer(passedState, 'RESET')
 
