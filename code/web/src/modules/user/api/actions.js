@@ -94,7 +94,7 @@ export function updateProfile(newUserDetails) {
     return axios.post(routeApi, mutation({
       operation: 'userUpdate',
       variables: newUserDetails,
-      fields: ['id', 'email', 'shippingAddress', 'description', 'image']
+      fields: ['id', 'email', 'description', 'shippingAddress', 'image']
     }))
     .then(response => {
       if (response.status !== 200) {
