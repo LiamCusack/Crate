@@ -13,6 +13,7 @@ import { grey2 } from '../../ui/common/colors'
 import { logout } from './api/actions'
 import UserMenu from './common/Menu'
 import Button from '../../ui/button'
+import { upload } from '../common/api/actions'
 
 // Component
 class Profile extends Component {
@@ -20,7 +21,9 @@ class Profile extends Component {
     super(props)
     this.state = {
       isEditing: false,
-      email: this.props.user.details.email
+      email: this.props.user.details.email,
+      description: this.props.user.details.description,
+      shippingAddress: this.props.user.details.shippingAddress
     }
   }
 
@@ -35,6 +38,14 @@ class Profile extends Component {
     this.setState({
       [event.target.name]: event.target.value
     })
+  }
+
+  onUpload = (event) => {
+    let profileImage = new FormData()
+    profileImage.append('imageFile', event.target.files[0])
+
+    this.props.upload(profileImage)
+      .then(response => {console.log('response', response)})
   }
 
   render() {
@@ -52,21 +63,45 @@ class Profile extends Component {
             <H4 style={{ marginBottom: '0.5em' }}>{this.props.user.details.name}</H4>
             {!this.state.isEditing &&
               <>
-                <img src={this.props.user.details.image} alt='profile-pic' style={{maxWidth: 250, marginBottom: '0.5em'}}/>
+                <img src={this.state.image} alt='profile-pic' style={{maxWidth: 250, marginBottom: '0.5em'}}/>
                 <p style={{ color: grey2, marginBottom: '2em' }}>{this.state.email}</p>
-                <p style={{ color: grey2, marginBottom: '2em' }}>About Me: {this.props.user.details.description}</p>
-                <p style={{ color: grey2, marginBottom: '2em' }}>Shipping Address: {this.props.user.details.shippingAddress}</p>
+                <p style={{ color: grey2, marginBottom: '2em' }}>About Me: {this.state.description}</p>
+                <p style={{ color: grey2, marginBottom: '2em' }}>Shipping Address: {this.state.shippingAddress}</p>
                 <p style={{ color: grey2, marginBottom: '2em' }}>Next Delivery:</p>
                 <Button theme='primary' onClick={this.toggleEdit}>Edit Profile</Button>
               </>
             }
             {this.state.isEditing &&
               <>
+                <label>Image:
+                  <input
+                    type='file'
+                    name='image'
+                    accept='image/*'
+                    onChange={this.onUpload}
+                  />
+                </label>
                 <label>Email:
                 <input
                   type='email'
                   name='email'
                   value={this.state.email}
+                  onChange={this.onChange}
+                />
+                </label>
+                <label>About Me:
+                <input
+                  type='text'
+                  name='description'
+                  value={this.state.description}
+                  onChange={this.onChange}
+                />
+                </label>
+                <label>Shipping Address:
+                <input
+                  type='text'
+                  name='shippingAddress'
+                  value={this.state.shippingAddress}
                   onChange={this.onChange}
                 />
                 </label>
@@ -93,4 +128,4 @@ function profileState(state) {
   }
 }
 
-export default connect(profileState, { logout })(Profile)
+export default connect(profileState, { logout, upload })(Profile)
