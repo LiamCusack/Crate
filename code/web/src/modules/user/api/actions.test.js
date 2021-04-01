@@ -1,6 +1,6 @@
 import * as actions from './actions'
 
-describe.only('actions', () => {
+describe('actions', () => {
   // testing one existing action
   it('should have a type of AUTH/SET_USER', () => {
     const user = {

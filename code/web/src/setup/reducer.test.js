@@ -1,6 +1,6 @@
 import { rootReducer } from './store'
 
-describe.only('rootReducer', () => {
+describe('rootReducer', () => {
   it('should have passed state', () => {
     const passedState = {
       common: 'common',
