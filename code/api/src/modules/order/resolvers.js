@@ -2,14 +2,14 @@
 import models from '../../setup/models'
 
 // Get order by ID
-export async function get(parentValue, { id }) {
-  return await models.Order.findOne({
-    where: { id },
-    include: [
-      { model: models.Subscription, as: 'subscription' },
-    ]
-  })
-}
+// export async function get(parentValue, { id }) {
+//   return await models.Order.findOne({
+//     where: { id },
+//     include: [
+//       { model: models.Subscription, as: 'subscription' },
+//     ]
+//   })
+// }
 
 //Get All orders
 export async function getAll() {
@@ -19,7 +19,7 @@ export async function getAll() {
    })
 }
 
-// Get Orders by User HOW DO I DO THIS? WOUDL THIS WORK?
+// Get Orders by User
 export async function getByUser(parentValue, {}, { auth }) {
   if(auth.user && auth.user.id > 0) {
     return await models.Order.findAll({

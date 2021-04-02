@@ -4,7 +4,7 @@ import { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLList } from 'graph
 import { UserType } from '../user/types'
 import CrateType from  '../crate/types'
 import { ProductType } from  '../product/types'
-import { ProductDeliveryType } from '../productDelivery/types'
+import { OrderProductType } from '../orderProduct/types'
 
 // Order type
 const OrderType = new GraphQLObjectType({
@@ -14,8 +14,8 @@ const OrderType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLInt },
     user: { type: UserType },
-    subscription: { type: SubscriptionType },
-    orderProducts: { type: new GraphQLList(OrderProductsType) },
+    crate: { type: CrateType },
+    orderProducts: { type: new GraphQLList(OrderProductType) },
     deliveryDate: { type: GraphQLString },
     createdAt: { type: GraphQLString },
     updatedAt: { type: GraphQLString }
