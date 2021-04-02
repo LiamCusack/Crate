@@ -13,6 +13,8 @@ import { grey2 } from '../../ui/common/colors'
 import { logout } from './api/actions'
 import UserMenu from './common/Menu'
 import Button from '../../ui/button'
+import Input from '../../ui/input/Input'
+import File from '../../ui/input/File'
 import { upload } from '../common/api/actions'
 import { updateProfile } from './api/actions'
 
@@ -40,8 +42,10 @@ class Profile extends Component {
 
   onChange = (event) => {
     event.preventDefault()
+    let userDetails = this.state.userDetails
+    userDetails[event.target.name] = event.target.value
     this.setState({
-      [event.target.name]: event.target.value
+      userDetails
     })
   }
 
@@ -80,8 +84,8 @@ class Profile extends Component {
               <>
                 <img src={this.state.image} alt='profile-pic' style={{maxWidth: 250, marginBottom: '0.5em'}}/>
                 <p style={{ color: grey2, marginBottom: '2em' }}>{this.state.userDetails.email}</p>
-                <p style={{ color: grey2, marginBottom: '2em' }}>About Me: {this.state.userDetails.description}</p>
-                <p style={{ color: grey2, marginBottom: '2em' }}>Shipping Address: {this.state.userDetails.shippingAddress}</p>
+                <p style={{ color: grey2, marginBottom: '2em' }}>About Me: {this.state.userDetails.description || "Edit to add some personal info!"}</p>
+                <p style={{ color: grey2, marginBottom: '2em' }}>Shipping Address: {this.state.userDetails.shippingAddress || "Edit to add your shipping address!"}</p>
                 <p style={{ color: grey2, marginBottom: '2em' }}>Next Delivery:</p>
                 <Button theme='primary' onClick={this.toggleEdit}>Edit Profile</Button>
               </>
@@ -89,35 +93,38 @@ class Profile extends Component {
             {this.state.isEditing &&
               <>
                 <label>Image:
-                  <input
+                  <Input
                     type='file'
                     name='image'
                     accept='image/*'
                     onChange={this.onUpload}
-                  />
+                    style={{ margin: '1em' }}/>
                 </label>
                 <label>Email:
-                <input
+                <Input
                   type='email'
                   name='email'
                   value={this.state.userDetails.email}
                   onChange={this.onChange}
+                  style={{ margin: '1em' }}
                 />
                 </label>
                 <label>About Me:
-                <input
+                <Input
                   type='text'
                   name='description'
                   value={this.state.userDetails.description}
                   onChange={this.onChange}
+                  style={{ margin: '1em' }}
                 />
                 </label>
                 <label>Shipping Address:
-                <input
+                <Input
                   type='text'
                   name='shippingAddress'
                   value={this.state.userDetails.shippingAddress}
                   onChange={this.onChange}
+                  style={{ margin: '1em' }}
                 />
                 </label>
                 <Button theme='primary' onClick={this.onSubmit}>Submit</Button>
@@ -133,7 +140,9 @@ class Profile extends Component {
 // Component Properties
 Profile.propTypes = {
   user: PropTypes.object.isRequired,
-  logout: PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired,
+  upload: PropTypes.func.isRequired,
+  updateProfile: PropTypes.func.isRequired
 }
 
 // Component State
