@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
     Order.belongsTo(models.Subscription)
     Order.hasMany(models.OrderProducts)
     Order.belongsTo(models.User,{
-      through: 'subscription'
+      through: Subscription
     })
   }
 

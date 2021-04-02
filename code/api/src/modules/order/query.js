@@ -13,8 +13,8 @@ export const orders = {
   resolve: getAll
 }
 
-// Orders by subscription
+// Orders by user
 export const ordersByUser = {
   type: new GraphQLList(OrderType),
-  resolve: getBySubscription
+  resolve: getByUser
 }
