@@ -11,6 +11,7 @@ export const LOGIN_REQUEST = 'AUTH/LOGIN_REQUEST'
 export const LOGIN_RESPONSE = 'AUTH/LOGIN_RESPONSE'
 export const SET_USER = 'AUTH/SET_USER'
 export const LOGOUT = 'AUTH/LOGOUT'
+export const UPDATE_PROFILE = 'AUTH/UPDATE_PROFILE'
 
 // Actions
 
@@ -36,7 +37,7 @@ export function login(userCredentials, isLoading = true) {
     return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,
-      fields: ['user {name, email, role}', 'token']
+      fields: ['user {name, email, role, shippingAddress, description, image}', 'token']
     }))
       .then(response => {
         let error = ''
@@ -84,6 +85,28 @@ export function register(userDetails) {
       variables: userDetails,
       fields: ['id', 'name', 'email']
     }))
+  }
+}
+
+// update user profile
+export function updateProfile(newUserDetails) {
+  return dispatch => {
+    return axios.post(routeApi, mutation({
+      operation: 'userUpdate',
+      variables: newUserDetails,
+      fields: ['id', 'email', 'description', 'shippingAddress', 'image']
+    }))
+    .then(response => {
+      if (response.status !== 200) {
+        throw new Error(`Something went wrong, please try again. ${response.status} error`)
+      } else {
+        const payload = response.data.data.userUpdate
+        return dispatch({
+          type: UPDATE_PROFILE,
+          payload
+        })
+      }
+    })
   }
 }
 
