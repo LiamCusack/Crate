@@ -29,6 +29,7 @@ module.exports = function(sequelize, DataTypes) {
 
   User.associate = function(models) {
     User.hasMany(models.Subscription)
+    User.hasMany(models.Order)
   }
 
   return User
