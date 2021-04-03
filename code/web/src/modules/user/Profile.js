@@ -28,7 +28,7 @@ class Profile extends Component {
         email: this.props.user.details.email,
         description: this.props.user.details.description,
         shippingAddress: this.props.user.details.shippingAddress,
-        image: null
+        image: ''
       },
       isEditing: false,
     }
@@ -54,20 +54,32 @@ class Profile extends Component {
     profileImage.append('imageFile', event.target.files[0])
 
     this.props.upload(profileImage)
-      .then(response => {console.log('image response', response)})
+      .then(response => {
+        if (response.status === 200) {
+          console.log('image response', response)
+          let userDetails = this.state.userDetails
+          userDetails.image = `/images/uploads/${ response.data.file }`
+
+          this.setState({
+           userDetails
+          })
+        }
+      })
   }
 
   onSubmit = (event) => {
     event.preventDefault()
-
     this.toggleEdit()
 
     this.props.updateProfile(this.state.userDetails)
-      .then(response => {console.log('update profile response', response)})
+      .then(response => {
+          console.log('update profile response', response)
+      })
       .catch(error => {console.log('profile error', error)})
   }
 
   render() {
+    console.log(this.state)
     return (
       <div>
         {/* SEO */}
@@ -91,7 +103,7 @@ class Profile extends Component {
               </>
             }
             {this.state.isEditing &&
-              <>
+              <form >
                 <label>Image:
                   <Input
                     type='file'
@@ -127,8 +139,8 @@ class Profile extends Component {
                   style={{ margin: '1em' }}
                 />
                 </label>
-                <Button theme='primary' onClick={this.onSubmit}>Submit</Button>
-              </>
+                <Button type="submit" theme='primary' onClick={(event)=> this.onSubmit(event)}>Submit</Button>
+              </form>
             }
           </GridCell>
         </Grid>

@@ -20,6 +20,12 @@ export default (state = userInitialState, action) => {
         details: action.user,
       }
 
+    case UPDATE_PROFILE:
+      return {
+        ...state,
+        details: action.user,
+      }
+
     case LOGIN_REQUEST:
       return {
         ...state,
@@ -41,12 +47,6 @@ export default (state = userInitialState, action) => {
         isLoading: false,
         isAuthenticated: false,
         details: null
-      }
-
-    case UPDATE_PROFILE:
-      return {
-        ...state,
-        details: action.user
       }
 
     default:

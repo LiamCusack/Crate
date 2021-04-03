@@ -37,7 +37,7 @@ export function login(userCredentials, isLoading = true) {
     return axios.post(routeApi, query({
       operation: 'userLogin',
       variables: userCredentials,
-      fields: ['user {name, email, role, shippingAddress, description, image}', 'token']
+      fields: ['user {id, name, email, role, shippingAddress, description, image}', 'token']
     }))
       .then(response => {
         let error = ''
@@ -89,21 +89,23 @@ export function register(userDetails) {
 }
 
 // update user profile
-export function updateProfile(newUserDetails) {
+export function updateProfile(userDetails) {
   return dispatch => {
     return axios.post(routeApi, mutation({
       operation: 'userUpdate',
-      variables: newUserDetails,
-      fields: ['id', 'email', 'description', 'shippingAddress', 'image']
+      variables: userDetails,
+      fields: ['id', 'image', 'email', 'shippingAddress', 'description'] 
     }))
     .then(response => {
       if (response.status !== 200) {
         throw new Error(`Something went wrong, please try again. ${response.status} error`)
       } else {
-        const payload = response.data.data.userUpdate
+        console.log(response)
+        // const payload = userDetails
+        // console.log(payload)
         return dispatch({
           type: UPDATE_PROFILE,
-          payload
+          // payload
         })
       }
     })
